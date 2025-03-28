@@ -30,11 +30,11 @@ Este projeto foi desenvolvido como parte do teste de estágio, seguindo os requi
 
 2. **Rodar a Build para Windows:**
    - Navegue até a pasta `Build`.
-   - Execute o arquivo `NomeDoJogo.exe` para iniciar o jogo.
+   - Execute o arquivo `novoProjetoEstagio.exe` para iniciar o jogo.
 
 ## Repositório no GitHub
 O projeto completo pode ser acessado no seguinte link:
-[GitHub - NomeDoRepositório](https://github.com/SEU_USUARIO/NomeDoRepositório)
+[GitHub - NomeDoRepositório](https://github.com/GuiMachado001/projetoEstagioGameSenacHub)
 
 ## Considerações Finais
 - O jogo foi testado e está funcional conforme os requisitos.

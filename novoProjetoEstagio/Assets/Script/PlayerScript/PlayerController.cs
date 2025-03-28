@@ -1,28 +1,27 @@
 using UnityEngine;
-using TMPro;  // Para acessar o componente TextMeshProUGUI
-using UnityEngine.SceneManagement;  // Para recarregar a cena
+using TMPro;  
+using UnityEngine.SceneManagement; 
 
 public class PlayerController : MonoBehaviour
 {
-    public float maxHealth = 5f;  // Vida máxima
-    public float currentHealth;   // Vida atual
+    public float maxHealth = 5f;  
+    public float currentHealth;   
     public float walkSpeed = 5f;
     public float runSpeed = 10f;
     public float jumpForce = 15f;
-    public GameObject deathPanel;  // Referência ao painel do Canvas
+    public GameObject deathPanel;  
 
     private Rigidbody rb;
     private bool isGrounded;
 
     private Animator animator;
 
-    public TextMeshProUGUI vidaText;  // Referência ao componente TextMeshProUGUI
-    public TextMeshProUGUI deathText; // Referência ao texto de "Você morreu"
-    private float initialHealth;  // Variável para armazenar o valor inicial da vida máxima
+    public TextMeshProUGUI vidaText;  
+    public TextMeshProUGUI deathText; 
+    private float initialHealth;  
 
-    private bool isDead = false;  // Flag para verificar se o jogador morreu
-    private float countdown = 3f; // Tempo para reiniciar o jogo
-
+    private bool isDead = false;  
+    private float countdown = 3f;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -33,29 +32,29 @@ public class PlayerController : MonoBehaviour
         rb.drag = 5f;
         rb.angularDrag = 10f;
 
-        // Inicializando a vida e armazenando a vida máxima
+
         currentHealth = maxHealth;
         initialHealth = maxHealth;
 
         // Inicializando o texto
         if (vidaText != null)
         {
-            vidaText.text = "Vidas: " + currentHealth;  // Inicializa com o valor da vida
+            vidaText.text = "Vidas: " + currentHealth;  
         }
 
         if (deathText != null)
         {
-            deathText.gameObject.SetActive(false);  // Desativa o texto de morte inicialmente
+            deathText.gameObject.SetActive(false); 
         }
 
-        // Debugando para garantir que o valor de maxHealth está correto
+
         Debug.Log("Max Health: " + maxHealth);  
         Debug.Log("Current Health: " + currentHealth);
     }
 
     void Update()
     {
-        // Se o jogador morreu, não faz mais nada (bloqueia o movimento)
+
         if (isDead)
         {
             countdown -= Time.deltaTime;
@@ -72,7 +71,6 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        // Lógica de movimento do jogador
         float moveX = Input.GetAxis("Horizontal");
         float moveZ = Input.GetAxis("Vertical");
 
@@ -104,14 +102,14 @@ public class PlayerController : MonoBehaviour
             isGrounded = false;
         }
 
-        // Verifica se a vida está cheia e exibe a mensagem
+
         if (currentHealth == initialHealth && vidaText != null)
         {
             vidaText.text = "Vida Cheia";
         }
         else if (vidaText != null)
         {
-            vidaText.text = "Vidas: " + currentHealth;  // Exibe o valor da vida
+            vidaText.text = "Vidas: " + currentHealth; 
         }
     }
 
@@ -138,10 +136,10 @@ public class PlayerController : MonoBehaviour
             Die();
         }
 
-        // Atualizando o texto da vida após o dano
+
         if (vidaText != null)
         {
-            vidaText.text = "Vidas: " + currentHealth;  // Atualiza o texto com o valor atual da vida
+            vidaText.text = "Vidas: " + currentHealth;  
         }
     }
 
@@ -153,7 +151,7 @@ public class PlayerController : MonoBehaviour
             currentHealth = maxHealth;
         }
 
-        // Atualizando o texto da vida após a cura
+
         if (vidaText != null)
         {
             vidaText.text = "Vidas: " + currentHealth;
@@ -162,25 +160,25 @@ public class PlayerController : MonoBehaviour
 
 public void Die()
 {
-    isDead = true;  // Marca o jogador como morto
-    rb.velocity = Vector3.zero;  // Para qualquer movimento do jogador
+    isDead = true; 
+    rb.velocity = Vector3.zero;  
 
-    // Verifica se o texto de morte está disponível e ativa ele
+
     if (deathText != null)
     {
-        deathText.gameObject.SetActive(true);  // Ativa o texto de morte
-        Debug.Log("Texto de Morte Ativado!");  // Debug para garantir que o texto foi ativado
+        deathText.gameObject.SetActive(true);  
+        Debug.Log("Texto de Morte Ativado!");  
     }
     else
     {
-        Debug.Log("Texto de morte não encontrado!");  // Caso o texto de morte não seja encontrado
+        Debug.Log("Texto de morte não encontrado!");  
     }
 
-    // Ativa o painel de morte
+
     if (deathPanel != null)
     {
-        deathPanel.SetActive(true);  // Torna o painel visível
-        Debug.Log("Painel de Morte Ativado!");  // Debug para garantir que o painel foi ativado
+        deathPanel.SetActive(true); 
+        Debug.Log("Painel de Morte Ativado!"); 
     }
 
     Debug.Log("Você morreu!");
@@ -190,7 +188,7 @@ public void Die()
 
     private void RestartGame()
     {
-        // Aqui reinicia a cena atual
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         deathPanel.SetActive(false);
     }
@@ -212,7 +210,7 @@ public void Die()
         }
     }
 
-    // Método para retornar a vida atual (getter)
+
     public float GetCurrentHealth()
     {
         return currentHealth;

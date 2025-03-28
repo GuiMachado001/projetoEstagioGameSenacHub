@@ -34,7 +34,7 @@ Este projeto foi desenvolvido como parte do teste de estágio, seguindo os requi
 
 ## Repositório no GitHub
 O projeto completo pode ser acessado no seguinte link:
-[GitHub - NomeDoRepositório](https://github.com/GuiMachado001/projetoEstagioGameSenacHub)
+[GitHub - projetoEstagioGameSenacHub](https://github.com/GuiMachado001/projetoEstagioGameSenacHub)
 
 ## Considerações Finais
 - O jogo foi testado e está funcional conforme os requisitos.
